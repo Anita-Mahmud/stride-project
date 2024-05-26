@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
-  const {  user } = useAuth();
+  const {  user,logout } = useAuth();
 
-  // const handleLogout = async()=>{
-  //   await logout()
-  // }
+  const handleLogout = async()=>{
+    await logout()
+  }
     const navItems = <>
    <li> <Link to="/">Home</Link></li>
    <li> <Link to="/products">Products</Link></li>
@@ -43,7 +43,7 @@ const Navbar = () => {
          </div>
          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-700 text-white rounded-box w-52">
            
-           <li><a>Logout</a></li>
+           <li><button onClick={handleLogout}>Logout</button></li>
          </ul>
        </div>
          
