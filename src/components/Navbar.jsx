@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const {  user } = useAuth();
+
+  // const handleLogout = async()=>{
+  //   await logout()
+  // }
     const navItems = <>
    <li> <Link to="/">Home</Link></li>
    <li> <Link to="/products">Products</Link></li>
    <li> <Link to="/about">About</Link></li>
    <li> <Link to="/contact">Contact</Link></li>
+   {user&& <li> <Link to="">Dashboard</Link></li>}
     </>
     return (
         <div className="navbar bg-base-100 px-10 py-6 shadow-2xl">
@@ -26,8 +33,23 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+         {!user && <Link to="/login" className="btn">Login</Link>}
+         {user && 
+         <div className="dropdown dropdown-end">
+         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+           <div className="w-10 rounded-full">
+             <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+           </div>
+         </div>
+         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-700 text-white rounded-box w-52">
+           
+           <li><a>Logout</a></li>
+         </ul>
+       </div>
+         
+         }
         </div>
+        
       </div>
     );
 };
