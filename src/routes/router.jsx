@@ -7,6 +7,9 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Dashboard from "../pages/Dashboard";
+import DashProducts from "../pages/DashProducts";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +49,21 @@ const router = createBrowserRouter([
         path:'/register',
         element:<Register></Register>
     },
+    {
+        path:'/dashboard',
+        element:<DashboardLayout></DashboardLayout>,
+        children:[
+            {
+                index:true,
+                element:<Dashboard></Dashboard>
+            },
+            {
+                path:'/dashboard/products',
+                element:<DashProducts></DashProducts>,
+                loader:()=>fetch('http://localhost:3000/shoes')
+            },
+        ]
+    }
 ]);
 
 export default router;

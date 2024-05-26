@@ -12,7 +12,7 @@ const Navbar = () => {
    <li> <Link to="/products">Products</Link></li>
    <li> <Link to="/about">About</Link></li>
    <li> <Link to="/contact">Contact</Link></li>
-   {user&& <li> <Link to="">Dashboard</Link></li>}
+   {user&& <li> <Link to="/dashboard">Dashboard</Link></li>}
     </>
     return (
         <div className="navbar bg-base-100 px-10 py-6 shadow-2xl">
@@ -38,7 +38,11 @@ const Navbar = () => {
          <div className="dropdown dropdown-end">
          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
            <div className="w-10 rounded-full">
-             <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+             <img alt="Tailwind CSS Navbar component" src={
+              user?.photoURL? user.photoURL: "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"}/>
+
+
+           
            </div>
          </div>
          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-700 text-white rounded-box w-52">
