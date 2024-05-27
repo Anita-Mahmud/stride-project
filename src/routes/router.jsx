@@ -61,7 +61,7 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/products',
                 element:<DashProducts></DashProducts>,
-                loader:()=>fetch('http://localhost:3000/shoes')
+                
             },
             {
                 path:'/dashboard/add/products',
