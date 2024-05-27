@@ -1,6 +1,9 @@
+
 import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
+    
+
   const { user } = useAuth();
   return (
     <div>
@@ -18,6 +21,8 @@ const Dashboard = () => {
     </div>
   </div>
 </div>
+
+
     </div>
   );
 };

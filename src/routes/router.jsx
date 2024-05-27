@@ -10,6 +10,7 @@ import Register from "../pages/Register";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
 import DashProducts from "../pages/DashProducts";
+import AddProducts from "../pages/AddProducts";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
                 path:'/dashboard/products',
                 element:<DashProducts></DashProducts>,
                 loader:()=>fetch('http://localhost:3000/shoes')
+            },
+            {
+                path:'/dashboard/add/products',
+                element:<AddProducts></AddProducts>
+               
             },
         ]
     }

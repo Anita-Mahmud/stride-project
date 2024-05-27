@@ -1,7 +1,8 @@
+import useAuth from "../../hooks/useAuth";
 
 
 const Product = ({title,brand,price,description,image_url}) => {
-    
+    const {user} = useAuth();
     return (
         <div className="card w-96 bg-base-100 shadow-lg shadow-indigo-500/50">
   <figure><img src={image_url} alt={title}/></figure>
@@ -11,6 +12,17 @@ const Product = ({title,brand,price,description,image_url}) => {
     <div className="card-actions justify-center mt-2 ">
       <button className="btn btn-primary px-20">Show Details</button>
     </div>
+    {
+      user &&
+      <div className="flex flex-col lg:flex-row justify-center gap-4">
+        <div className="card-actions justify-center mt-2 ">
+      <button className="btn btn-outline btn-primary px-5">Edit</button>
+    </div>
+    <div className="card-actions justify-center mt-2 ">
+      <button className="btn btn-outline btn-error">Delete</button>
+    </div>
+      </div>
+    }
   </div>
 </div>
     );
