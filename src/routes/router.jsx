@@ -12,6 +12,7 @@ import Dashboard from "../pages/Dashboard";
 import DashProducts from "../pages/DashProducts";
 import AddProducts from "../pages/AddProducts";
 import DashEditProduct from "../pages/DashEditProduct";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -57,21 +58,21 @@ const router = createBrowserRouter([
         children:[
             {
                 index:true,
-                element:<Dashboard></Dashboard>
+                element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>
             },
             {
                 path:'/dashboard/products',
-                element:<DashProducts></DashProducts>,
+                element:<PrivateRoute><DashProducts></DashProducts></PrivateRoute>,
                 
             },
             {
                 path:'/dashboard/add/products',
-                element:<AddProducts></AddProducts>
+                element:<PrivateRoute><AddProducts></AddProducts></PrivateRoute>
                
             },
             {
                 path:'/dashboard/products/edit/:id',
-                element:<DashEditProduct></DashEditProduct>,
+                element:<PrivateRoute><DashEditProduct></DashEditProduct></PrivateRoute>,
                 loader:({params})=>fetch(`http://localhost:3000/shoes/${params.id}`)
                
             },

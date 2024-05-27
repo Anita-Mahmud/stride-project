@@ -31,7 +31,7 @@ const DashProducts = () => {
     return (
        <div>
         <ToastContainer></ToastContainer>
-        <h1 className="text-center text-3xl font-bold m-8">All Products</h1>
+        <h1 className="text-center text-3xl font-bold my-10">All Products</h1>
         <div className="flex flex-wrap gap-4 justify-center my-10">
             {
                 products.map(product=><DashSingleProduct key={product.id} {...product}  
