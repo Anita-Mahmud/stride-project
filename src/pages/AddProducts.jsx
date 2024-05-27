@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddProducts = () => {
     const navigate = useNavigate();
@@ -26,18 +28,40 @@ const AddProducts = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          navigate('/dashboard/products');
+          // navigate('/dashboard/products');
           form.reset();
-          
+          toast.success(`Product Added Successfully`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
+          setTimeout(()=>{
+            navigate('/dashboard/products');
+          },2000)
         });
     };
   
     return (
       <div>
+          <ToastContainer></ToastContainer>
         <h1 className="text-5xl font-bold text-center">Add a Product</h1>
   
         <div className="my-16">
           <form onSubmit={handleSubmit}>
+          <div className="mt-2">
+              <input
+                className="bg-gray-100 p-4 w-full border border-black rounded-lg"
+                type="text"
+                name="id"
+                placeholder="ID"
+              />
+            </div>
             <div className="mt-2">
               <input
                 className="bg-gray-100 p-4 w-full border border-black rounded-lg"
@@ -78,14 +102,7 @@ const AddProducts = () => {
                 placeholder="Image URL"
               />
             </div>
-            <div className="mt-2">
-              <input
-                className="bg-gray-100 p-4 w-full border border-black rounded-lg"
-                type="text"
-                name="id"
-                placeholder="ID"
-              />
-            </div>
+           
             <div className="mt-2 flex justify-center items-center">
               <input
                 className="btn mt-4 w-full bg-red-500 text-white p-4"

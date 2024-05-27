@@ -11,6 +11,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
 import DashProducts from "../pages/DashProducts";
 import AddProducts from "../pages/AddProducts";
+import DashEditProduct from "../pages/DashEditProduct";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,12 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/add/products',
                 element:<AddProducts></AddProducts>
+               
+            },
+            {
+                path:'/dashboard/products/edit/:id',
+                element:<DashEditProduct></DashEditProduct>,
+                loader:({params})=>fetch(`http://localhost:3000/shoes/${params.id}`)
                
             },
         ]
